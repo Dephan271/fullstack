@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+</head>
+<body>
+    <h1>Job Application Form</h1>
+    <form action="submit.php" method="POST" enctype="multipart/form-data">
+        <h2>Personal Information</h2>
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="full_name" name="full_name" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <!-- Add more personal information fields here -->
+
+        <h2>Position Information</h2>
+        <label for="position">Position Applied For:</label>
+        <input type="text" id="position" name="position" required><br>
+
+        <!-- Add more position information fields here -->
+
+        <h2>Professional Background</h2>
+        <label for="experience">Years of Relevant Experience:</label>
+        <input type="number" id="experience" name="experience" required><br>
+
+        <!-- Add more professional background fields here -->
+
+        <h2>Educational Qualifications</h2>
+        <label for="education">Highest Education Attained:</label>
+        <input type="text" id="education" name="education" required><br>
+
+        <!-- Add more educational qualification fields here -->
+
+        <h2>Salary Information</h2>
+        <label for="previous_salary">Previous Salary:</label>
+        <input type="text" id="previous_salary" name="previous_salary"><br>
+
+        <!-- Add more salary information fields here -->
+
+        <h2>Availability</h2>
+        <label for="notice_period">Notice Period:</label>
+        <input type="text" id="notice_period" name="notice_period"><br>
+
+        <!-- Add more availability fields here -->
+
+        <h2>References</h2>
+        <label for="reference_name">Reference Name:</label>
+        <input type="text" id="reference_name" name="reference_name"><br>
+
+        <!-- Add more reference fields here -->
+
+        <h2>Cover Letter</h2>
+        <label for="cover_letter">Write a cover letter:</label><br>
+        <textarea id="cover_letter" name="cover_letter" rows="4" cols="50"></textarea><br>
+
+        <!-- Add more optional fields here -->
+
+        <h2>Interview Availability</h2>
+        <label for="interview_availability">Preferred Interview Date/Time:</label>
+        <input type="datetime-local" id="interview_availability" name="interview_availability"><br>
+
+        <!-- Add more interview availability fields here -->
+
+        <h2>Attachments</h2>
+        <label for="resume">Upload Resume:</label>
+        <input type="file" id="resume" name="resume"><br>
+
+        <!-- Add more attachment fields here -->
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
