@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html ng-app="flightApp">
+
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <style> 
+    body {
+    font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h1, h2, h3 {
+    color: #333;
+    }
+
+    form {
+    max-width: 400px;
+    margin: 0 auto;
+    }
+
+    input, button {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    }
+
+    table {
+    border-collapse: collapse;
+    width: 100%;
+    }
+
+    td, th {
+    border: 1px solid #ccc;
+    padding: 5px;
+    }
+
+    th {
+    background-color: #333;
+    color: #fff;
+    }
+
+    button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    }
+  </style>
+</head>
+
+<body ng-controller="MainCtrl">
+
+  <header>
+    <h1>Flight Reservations</h1>
+  </header>
+
+  <div class="container">
+
+    <form name="reservationForm">
+
+      <div class="form-group">
+        <label>Departure City:</label>
+        <input type="text" ng-model="departureCity" required>
+      </div>
+
+      <div class="form-group">
+        <label>Arrival City:</label>
+        <input type="text" ng-model="arrivalCity" required>
+      </div>
+
+      <div class="form-group">
+        <label>Departure Date:</label>
+        <input type="date" ng-model="departDate" required>
+      </div>
+
+      <button ng-click="checkAvailability()">Check Availability</button>
+
+    </form>
+
+    <div ng-if="availableFlights.length > 0">
+      <h2>Available Flights</h2>
+      <table>
+        <tr>
+          <th>Flight Number</th>
+          <th>Departure Time</th>
+          <th>Arrival Time</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+        <tr ng-repeat="flight in availableFlights">
+          <td>{{flight.number}}</td>
+          <td>{{flight.departs | date:'shortTime'}}</td>
+          <td>{{flight.arrives | date:'shortTime'}}</td>
+          <td>{{flight.price | currency}}</td>
+          <td><button ng-click="selectFlight(flight)">Select</button></td>
+        </tr>
+      </table>
+      <div ng-if="selectedFlight">
+        <h3>Selected Flight:</h3>
+        <p>Flight Number: {{selectedFlight.number}}</p>
+        <p>Departure Time: {{selectedFlight.departs | date:'short'}}</p>
+        <p>Arrival Time: {{selectedFlight.arrives | date:'short'}}</p>
+        <p>Price: {{selectedFlight.price | currency}}</p>
+        <button ng-click="bookFlight()">Book Flight</button>
+      </div>
+    </div>
+
+    <div ng-if="reservationConfirmed">
+      <h2>Reservation Confirmed!</h2>
+      <p>Your flight from {{departureCity}} to {{arrivalCity}} on {{departDate | date:'longDate'}} has been booked.</p>
+      <p>Flight Details:</p>
+      <p>Flight Number: {{selectedFlight.number}}</p>
+      <p>Departure Time: {{selectedFlight.departs | date:'short'}}</p>
+      <p>Arrival Time: {{selectedFlight.arrives | date:'short'}}</p>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

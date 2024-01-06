@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div ng-controller="MyCtrl">
+
+        <button ng-click="toggleDisplay()">Toggle Display</button>
+      
+        <div ng-if="showDetails">
+          <h3>Flight Details</h3>
+          <!-- Use ng-repeat to loop over flights array -->
+          <div ng-repeat="flight in flights">
+            <p>
+              <!-- Use ng-switch for conditional content -->
+              <span ng-switch on="flight.type">
+                <span ng-switch-when="departure">Departure:</span>
+                <span ng-switch-when="arrival">Arrival:</span>
+              </span>
+              {{flight.time}} 
+            </p>
+          </div>
+        </div>
+      
+      </div>
+
+      <sctipt> 
+        // In controller
+        $scope.showDetails = false;
+
+        $scope.flights = [
+            {type: 'departure', time: '1:30pm'},
+            {type: 'arrival', time: '4:45pm'}  
+        ];
+
+        $scope.toggleDisplay = function() {
+        $scope.showDetails = !$scope.showDetails;
+        }
+      </sctipt>
+</body>
+</html>
